@@ -6,34 +6,53 @@
   <link type="text/css" rel="stylesheet" href="/css/materialize.min.css" media="screen,projection" />
   <link href="/css/main.css" rel="stylesheet" type="text/css">
 </head>
+
 <body>
+  <ul id="dropdown1" class="dropdown-content">
+    <li><a class= "grey-text" href="#!">Movies</a></li>
+    <li class="divider"></li>
+    <li><a href="#!" class= "grey-text">TV Shows</a></li>
+    <li class="divider"></li>
+    <li><a href="#!" class= "grey-text">Artists</a></li>
+  </ul>
   <nav class="grey lighten-3">
     <div class="nav-wrapper grey lighten-3">
-
-    <ul class="right red-text text-darken-2">
-      <li><a class="red-text text-darken-2" id="logo">Vinge</a></li>
-      <li><a class="red-text text-darken-2" id="user_logo">{{email}}</a></li>
-      <li><a class= "red-text text-darken-2" href="/sessions/logout">Logout</a></li>
-
-    </ul>
-
-      <div class="searchBar">
-      <form>
-        <div class="input-field red-text text-darken-2">
-          <input class="red-text text-darken-2" id="search" type="search" required>
+      <ul class="right red-text text-darken-2">
+        <li><a class="dropdown-button grey-text" href="#!" data-activates="dropdown1">All<i class="material-icons right">arrow_drop_down</i></a></li>
+        <li><a class="red-text text-darken-2" id="user_logo">{{email}}</a></li>
+        <li><a class="red-text text-darken-2" href="/sessions/logout">Logout</a></li>
+      </ul>
+      <form class="searchBar" action="submit" method="post">
+        <div class="input-field red-text text-darken-2" id="input-field1">
+          <input placeholder="Search for artist, movie, or TV show recommendations" class="red-text text-darken-2" id="search" type="search" required>
           <label for="search"><i class="material-icons red-text text-darken-2">search</i></label>
           <i class="material-icons">close</i>
         </div>
       </form>
-        </div>
     </div>
   </nav>
-
   <div class="main-container">
-
+    <div class="video-container">
+      <nav class="red darken-2" id="prefs">
+        <ul>
+          <li class= "pref"><a class= "brand-logo" id="logo">Vinge</a></li>
+          <li class= "pref right orange lighten-3"><a href="#" >Meh</a></li>
+          <li class= "pref right amber accent-4"><a href="#">Dislike</a></li>
+          <li class= "pref right light-blue accent-2"><a href="#">Like</a></li>
+        </ul>
+      </nav>
+      <div class="video-container">
+        <div class="video-div">
+          <iframe
+          src="{{yUrl}}">
+          </iframe>
+        </div>
+      </div>
+    </div>
   </div>
-  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script type="text/javascript" src="/js/materialize.min.js"></script>
 </body>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/js/materialize.min.js"></script>
+<script type="text/javascript" src="/js/script.js"></script>
 
 </html>

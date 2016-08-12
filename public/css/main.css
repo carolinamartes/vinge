@@ -1,15 +1,24 @@
-form{
-  height: 100%
+.pref{
+  width: 15%;
+  text-align: center;
 }
+
+
 .searchBar{
-  width:600px;
-  height: 100%
+  width:60%;
 }
-#logo{
-  font-weight: 500;
+
+#search{
+  width: 90%;
 }
+
+.main-container{
+  width: 80%;
+  margin: 2% auto;
+}
+
 #logo:hover{
-  background-color: #eeeeee;
+  background-color: #d32f2f;
   cursor: default;
 }
 #user_logo:hover{

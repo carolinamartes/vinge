@@ -13,8 +13,11 @@ router.post('/create', db.login, function(req, res){
   res.redirect('/');
 });
 
-router.get('/guest',db.login, function(req, res){
-res.render('index', { 'email': 'Guest' });
+
+router.get('/guest',db.create_user, function(req, res){
+  req.session.user.email="Guest";
+    res.render('index', {'email': 'Guest'});
+      console.log(req.session.user);
 });
 
 router.get('/logout', db.logout, function(req, res){

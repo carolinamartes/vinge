@@ -4,28 +4,50 @@ const mustacheExpress = require('mustache-express');
 const bodyParser = require("body-parser");
 const session = require('express-session');
 const flash = require('connect-flash');
+const request = require('request');
+const env = require('dotenv').config();
 
 app.engine('html', mustacheExpress());
 app.set('view engine', 'html');
 app.set('views', __dirname + '/views');
 app.use("/", express.static(__dirname + '/public'));
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 app.use(bodyParser.json());
+// app.use(countingVideos())
+
+app.get('/search/:query', function(req, res) {
+  var query = req.params.query;
+
+  var url = 'https://www.tastekid.com/api/similar?q=' + query + '&verbose=1&k=' + process.env.pass
+  var videoCounter=0;
+  request(url, function(error, response, data) {
+    if (!error && response.statusCode == 200) {
+      var data = JSON.parse(data);
+      var currentVideo = data.Similar.Results[videoCounter];
+      res.render('index', currentVideo)
+    }
+  })
+})
+
 
 app.use(session({
   secret: 'demo-secret',
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: false }
+  cookie: {
+    secure: false
+  }
 }));
 
 app.use(flash());
 
-app.listen(3000, function () {
+app.listen(3000, function() {
   console.log('Auth Demo App Online!');
 });
 
-app.use(function(err, req, res, next){
+app.use(function(err, req, res, next) {
   res.status(err.status || 500);
 });
 
