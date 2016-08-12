@@ -16,12 +16,14 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 // app.use(countingVideos())
+var type="";
 
-app.get('/search/:query', function(req, res) {
+
+app.get('/search/:query/:counter', function(req, res) {
   var query = req.params.query;
-
-  var url = 'https://www.tastekid.com/api/similar?q=' + query + '&verbose=1&k=' + process.env.pass
-  var videoCounter=0;
+  var url = 'https://www.tastekid.com/api/similar?q=' + query + "&type=" + type+'&verbose=1&k=' + process.env.pass
+  var videoCounter= req.params.counter;
+  console.log(videoCounter)
   request(url, function(error, response, data) {
     if (!error && response.statusCode == 200) {
       var data = JSON.parse(data);
@@ -30,6 +32,7 @@ app.get('/search/:query', function(req, res) {
     }
   })
 })
+
 
 
 app.use(session({
