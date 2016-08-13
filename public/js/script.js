@@ -15,13 +15,13 @@ window.location="/search/"+query+"/"+counter
 })
 
 
-
 $("body").keydown(function (e) {
   if(e.keyCode == 39) {
 
-query = window.location.pathname.replace('/search/','')
-query = query.replace(/\/[^\/]*$/,'')
-
+var myString = window.location.pathname;
+var myRegexp = /\/search\/(.*)\/movies/;
+var match = myRegexp.exec(myString);
+var query=match[1]
 
 counter= window.location.pathname.replace(/(...+\/)/, '');
 counter++
@@ -29,15 +29,26 @@ counter++
 window.location="/search/"+query+"/"+counter
 }
 
-$("#dropdownMovies").on("click", function(){
-type=$(this).val()
-window.location="/search/"+query+"/"+counter
-})
-
-
-
-
   });
+
+
+
+$(".mediaOptions").on("click", function(){
+
+  var myString = window.location.pathname;
+  var myRegexp = /\/search\/(.*)\/movies/;
+  var match = myRegexp.exec(myString);
+  var query=match[1]
+
+    var myString = window.location.pathname;
+    var myRegexp = /search\/(.*)\/music|movies|shows/;
+    var match = myRegexp.exec(myString);
+    var Qtype=match[0]
+
+  var Qtype=$(this).attr('id');
+  window.location="/search/"+query+"/"+Qtype+"/"+counter
+
+  })
 
 
  });

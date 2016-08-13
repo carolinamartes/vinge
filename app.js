@@ -15,11 +15,26 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 app.use(bodyParser.json());
-// app.use(countingVideos())
-var type="";
 
 
-app.get('/search/:query/:counter', function(req, res) {
+
+app.get('/search/:query/:counter/', function(req, res) {
+  var query = req.params.query;
+  var url = 'https://www.tastekid.com/api/similar?q=' + query + '&verbose=1&k=' + process.env.pass
+  var videoCounter= req.params.counter;
+  console.log(videoCounter)
+  request(url, function(error, response, data) {
+    if (!error && response.statusCode == 200) {
+      var data = JSON.parse(data);
+      var currentVideo = data.Similar.Results[videoCounter];
+      res.render('index', currentVideo)
+    }
+  })
+})
+
+
+app.get('/search/:query/:Qtype/:counter', function(req, res) {
+  var type= req.params.Qtype || "";
   var query = req.params.query;
   var url = 'https://www.tastekid.com/api/similar?q=' + query + "&type=" + type+'&verbose=1&k=' + process.env.pass
   var videoCounter= req.params.counter;
@@ -34,7 +49,6 @@ app.get('/search/:query/:counter', function(req, res) {
 })
 
 
-
 app.use(session({
   secret: 'demo-secret',
   resave: false,
@@ -47,7 +61,7 @@ app.use(session({
 app.use(flash());
 
 app.listen(3000, function() {
-  console.log('Auth Demo App Online!');
+  console.log('Server works on port 3000!');
 });
 
 app.use(function(err, req, res, next) {

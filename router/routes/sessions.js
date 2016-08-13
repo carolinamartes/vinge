@@ -15,6 +15,7 @@ router.post('/create', db.login, function(req, res){
 
 
 router.get('/guest',db.create_user, function(req, res){
+  if(res.error) req.flash('error', res.error);
   req.session.user.email="Guest";
     res.render('index', {'email': 'Guest'});
       console.log(req.session.user);
