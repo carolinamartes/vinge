@@ -11,39 +11,37 @@ $('.searchBar').on('submit', function (e){
 e.preventDefault();
 query= $('input').val();
 
-window.location="/search/"+query+"/"+counter
+  window.location="/search/"+query+"/all/"+counter
 })
 
 
 $("body").keydown(function (e) {
   if(e.keyCode == 39) {
 
-var myString = window.location.pathname;
-var myRegexp = /\/search\/(.*)\/movies/;
-var match = myRegexp.exec(myString);
-var query=match[1]
+    var myString = window.location.pathname;
+    var myRegexp = /\/search\/(.*)\/\d/;
+    var match = myRegexp.exec(myString);
+    var query=match[1]
 
 counter= window.location.pathname.replace(/(...+\/)/, '');
 counter++
 
-window.location="/search/"+query+"/"+counter
+  window.location="/search/"+query+"/all/"+counter
 }
 
   });
 
 
-
 $(".mediaOptions").on("click", function(){
+//get correct regexs
 
-  var myString = window.location.pathname;
-  var myRegexp = /\/search\/(.*)\/movies/;
-  var match = myRegexp.exec(myString);
-  var query=match[1]
+var myString = window.location.pathname;
+var myRegexp = /(search)\/(.*)\/(all|music|movies|shows)/
+var match = myRegexp.exec(myString);
+var matcharr=match[0].split('/');
+query= matcharr[1]
+Qtype= matcharr[2]
 
-    var myString = window.location.pathname;
-    var myRegexp = /search\/(.*)\/music|movies|shows/;
-    var match = myRegexp.exec(myString);
-    var Qtype=match[0]
 
   var Qtype=$(this).attr('id');
   window.location="/search/"+query+"/"+Qtype+"/"+counter
