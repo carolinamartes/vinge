@@ -1,16 +1,16 @@
 {
   "name": "auth",
   "version": "1.0.0",
-  "description": "Simple Express Demo.",
+  "description": "Youtube video binging",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js"
   },
   "keywords": [
-    "auth"
+    "binge"
   ],
-  "author": "Bryan Mytko",
+  "author": "Carolina Martes",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^0.8.7",
