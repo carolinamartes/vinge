@@ -4,6 +4,7 @@ $(document).ready(function() {
   $('select').material_select();
   $(".dropdown-button").dropdown();
 
+
 $('.pref').on("click", function(){
 
 var preference = $(this).attr('id');
@@ -13,21 +14,11 @@ var myString = window.location.pathname;
 var myRegexp = /(search)\/(.*)\/(all|music|movies|shows)/
 var match = myRegexp.exec(myString);
 var matcharr = match[0].split('/');
-
-var name = matcharr[1]
+// var email = $('#user_logo').text() || 'Guest';
+var name = matcharr[1];
 
 var newPref= {preference:preference,type:type,name:name}
 
-$.ajax({
-  "url": "/preferences",
-  "method": "GET",
-  "success": function(data){
-    console.log(data)
-  },
-  "error": function(){
-    console.log("error")
-  }
-})
 
 
 $.ajax({
@@ -70,6 +61,15 @@ $.ajax({
     var counter = 0;
     window.location = "/search/" + query + "/" + Qtype + "/" + counter
   })
+
+$('.autoText').on('click', function(e) {
+  var query = $('h6').text();
+  console.log(query)
+  var Qtype = Qtype || "all";
+  var counter = 0;
+  window.location = "/search/" + query + "/" + Qtype + "/" + counter
+})
+
 
   $("body").keydown(function(e) {
     if (e.keyCode == 39) {

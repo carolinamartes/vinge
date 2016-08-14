@@ -5,6 +5,19 @@
   padding: 50px;
 }
 
+/*http://callmenick.com/post/various-css-input-text-styles*/
+input[type="email"],input[type="password"] {
+  padding: 10px;
+  border: solid 1px	rgba(192,192,192, 0.5);
+  border-radius: 5px;
+}
+input[type="email"]:focus, input[type="password"]:focus,
+input[type="email"].focus, input[type="password"].focus {
+  border: solid 1px	rgba(192,192,192, 1);
+}
+
+
+
 h1 {
   text-align: center;
   margin-bottom: 40px;
@@ -35,21 +48,16 @@ a{
 color:#ef5350;
 }
 
-label{
-  font-size: 15px;
+::-webkit-input-placeholder {
+   color: grey;
 }
-.input-field input[type=password]:focus {
+
+
+.input-field input[type="password"]:focus {
    border-bottom: 1px solid #ef5350;
    box-shadow: 0 1px 0 0 #ef5350;
-
  }
- .input-field input[type=email]:focus{
+ .input-field input[type="email"]:focus {
     border-bottom: 1px solid #ef5350;
     box-shadow: 0 1px 0 0 #ef5350;
   }
-.input-field input[type=password]:focus + label {
-      color: grey;
-}
-.input-field input[type=email]:focus + label {
-      color: grey;
-}

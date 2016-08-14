@@ -17,27 +17,29 @@
               <strong>Oh snap!<strong> {{error}}
             </div>
             {{/error}}
-              <form class="col s12" action="/users/create" method="post">
-                <div class="row">
-                  <div class="input-field col s12">
-                      <input type="email" id="inputEmail">
-                      <label for="email">Email</label>
+
+              <form class="form" action="/users/create" method="post">
+
+                  <div class="input-field">
+
+                    <div class="input-div">
+                      <input name="email" type="email" id="inputEmail" placeholder="Email">
+                    </div>
                   </div>
+                  <div class="input-div">
+
+                    <div class="input-field">
+                      <input name="password" type="password"  id="inputPassword" placeholder="Password">
+                    </div>
                   </div>
-                  <div class="row">
-                  <div class="input-field col s12">
-                      <input type="password" id="inputPassword">
-                      <label for="password">Password</label>
-                  </div>
-                </div>
-                    <div class="row">
-                    <div class="col s12">
+                  <div class="form-group">
+                    <div class="col l10 offset-2">
                       <button type="submit" class="btn btn-primary">Join!</button>
                     </div>
-                    </div>
+                  </div>
+
               </form>
-            </div class= "col s12">
-            <p>Already a member? <a href="/sessions/new">Login</a></p>
+            </div>
             <p>No time for that?<a href="/sessions/guest"> Continue as guest</a></p>
           </div>
         </div>

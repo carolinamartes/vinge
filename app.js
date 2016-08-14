@@ -6,8 +6,8 @@ const session = require('express-session');
 const flash = require('connect-flash');
 const request = require('request');
 const env = require('dotenv').config();
-// const pgp = require('pg-promise')();
-// const db = pgp('postgres://carolinamartes@localhost:5432/auth_p2');
+const pgp = require('pg-promise')();
+const db = pgp('postgres://carolinamartes@localhost:5432/auth_p2');
 
 app.engine('html', mustacheExpress());
 app.set('view engine', 'html');
@@ -18,20 +18,17 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
-app.get('/preferences', function(req, res){
-  console.log(session.user.email)
-  db.one('SELECT id FROM users').then(function(data){
-  console.log(data)
-})
-})
 
 app.post('/preferences', function(req, res) {
   var newPref = req.body;
   console.log(newPref)
   db.none(
       'INSERT INTO preferences (preference,type,name) VALUES ($1,$2,$3)', [newPref.preference, newPref.type, newPref.name])
-    .done(function() {
-      console.log('Preference saved!');
+    .catch(function() {
+      console.log("error")
+      next();
+    }).then(function(user) {
+      console.log("Submitted prefs!")
     });
 });
 
