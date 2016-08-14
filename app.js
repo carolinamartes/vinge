@@ -23,7 +23,7 @@ app.post('/preferences', function(req, res) {
   var newPref = req.body;
   console.log(newPref)
   db.none(
-      'INSERT INTO preferences (preference,type,name) VALUES ($1,$2,$3)', [newPref.preference, newPref.type, newPref.name])
+      'INSERT INTO preferences (preference,type,name,user_email) VALUES ($1,$2,$3,$4)', [newPref.preference, newPref.type, newPref.name, newPref.user_email])
     .catch(function() {
       console.log("error")
       next();

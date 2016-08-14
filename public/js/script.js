@@ -4,6 +4,17 @@ $(document).ready(function() {
   $('select').material_select();
   $(".dropdown-button").dropdown();
 
+var user_email= $('#user_logo').text();
+
+if (user_email!==""){
+sessionStorage.setItem('user_email', $('#user_logo').text())
+}
+
+if (user_email===""){
+user_email= sessionStorage.getItem('user_email');
+$('#user_logo').text(user_email);
+}
+
 
 $('.pref').on("click", function(){
 
@@ -14,10 +25,9 @@ var myString = window.location.pathname;
 var myRegexp = /(search)\/(.*)\/(all|music|movies|shows)/
 var match = myRegexp.exec(myString);
 var matcharr = match[0].split('/');
-// var email = $('#user_logo').text() || 'Guest';
 var name = matcharr[1];
 
-var newPref= {preference:preference,type:type,name:name}
+var newPref= {preference:preference,type:type,name:name,user_email:user_email}
 
 
 

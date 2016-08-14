@@ -13,6 +13,10 @@ router.post('/create', db.login, function(req, res){
   res.redirect('/');
 });
 
+router.get('/guest',db.login, function(req, res){
+res.render('index', { 'email': 'Guest' });
+});
+
 router.get('/logout', db.logout, function(req, res){
   res.redirect('/');
 });
