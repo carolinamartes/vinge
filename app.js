@@ -18,18 +18,17 @@ app.use(bodyParser.json());
 
 app.get('/autocomplete/:input', function(req,res){
 
-  var input= req.params.input;
-  var url= 'https://www.tastekid.com/api/similar?q=' + input + '&k=' + process.env.pass
-  request(url, function(error, response, data) {
-    if (!error && response.statusCode == 200) {
-    var movie_data = JSON.parse(data);
-    var thisMovie= movie_data.Similar.Info[0];
-    // var thisInput = new RegExp(input,"g");
-    // var otherMovies=movie_data.Similar.Results;
-    if (thisMovie.Type!=='unknown'&& thisMovie.Type!=='books'&& thisMovie.Type!=='authors'&& thisMovie.Type!=='games'){
-    console.log(thisMovie)
-    res.send(thisMovie)
-    }
+  app.get('/autocomplete/:input', function(req,res){
+      var input= req.params.input;
+      var url= "http://www.omdbapi.com/?t=" + input + "&r=json";
+request(url, function(error, response, data) {
+if (!error && response.statusCode == 200) {
+var movie_data = JSON.parse(data);
+var title= movie_data.Title;
+console.log(title)
+res.send(title)
+        }		      
+
     }
   })
 })
