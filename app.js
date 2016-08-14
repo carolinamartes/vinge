@@ -6,6 +6,8 @@ const session = require('express-session');
 const flash = require('connect-flash');
 const request = require('request');
 const env = require('dotenv').config();
+// const pgp = require('pg-promise')();
+// const db = pgp('postgres://carolinamartes@localhost:5432/auth_p2');
 
 app.engine('html', mustacheExpress());
 app.set('view engine', 'html');
@@ -16,21 +18,35 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
+app.get('/preferences', function(req, res){
+  console.log(session.user.email)
+  db.one('SELECT id FROM users').then(function(data){
+  console.log(data)
+})
+})
 
+app.post('/preferences', function(req, res) {
+  var newPref = req.body;
+  console.log(newPref)
+  db.none(
+      'INSERT INTO preferences (preference,type,name) VALUES ($1,$2,$3)', [newPref.preference, newPref.type, newPref.name])
+    .done(function() {
+      console.log('Preference saved!');
+    });
+});
 
-  app.get('/autocomplete/:input', function(req,res){
-      var input= req.params.input;
-      var url= "http://www.omdbapi.com/?t=" + input + "&r=json";
-request(url, function(error, response, data) {
-if (!error && response.statusCode == 200) {
-var movie_data = JSON.parse(data);
-var title= movie_data.Title;
-console.log(title)
-res.send(title)
-        }
-
-    })
+app.get('/autocomplete/:input', function(req, res) {
+  var input = req.params.input;
+  var url = "http://www.omdbapi.com/?t=" + input + "&r=json";
+  request(url, function(error, response, data) {
+    if (!error && response.statusCode == 200) {
+      var movie_data = JSON.parse(data);
+      var title = movie_data.Title;
+      console.log(title)
+      res.send(title)
+    }
   })
+})
 
 
 app.get('/search/:query/:Qtype/:counter/', function(req, res) {
