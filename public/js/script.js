@@ -4,36 +4,37 @@ $(document).ready(function() {
   $('select').material_select();
   $(".dropdown-button").dropdown();
 
-$("input.autocomplete").on('input', function() {
-  var input = $('input').val();
-$.ajax({
-"method": "get",
-"url": "/autocomplete/"+input,
-"success" : function(title){
-  var data={};
-  var key=title
-  data[key]=null;
-  console.log(data)
-  $("input.autocomplete").autocomplete({
-  data
-})
-},
-"error": function(){
-  console.log("error")
-}
-})
-});
+  $("input.autocomplete").on("click", function() {
+    $('#suggestions-nav').css("opacity", 1)
+  })
 
-  var counter = 0;
-  var query = "";
+  $("input.autocomplete").on('keypress', function() {
+    var input = $('input').val();
+
+    $.ajax({
+      "method": "get",
+      "url": "/autocomplete/" + input,
+      "success": function(data) {
+        console.log(data)
+        $('#suggestions').text(data)
+      },
+      "error": function() {
+        console.log("error")
+      }
+    })
+  })
+
+  var query = query || "";
+  var counter = counter || 0;
+  var Qtype = Qtype || "";
 
   $('.searchBar').on('submit', function(e) {
     e.preventDefault();
     query = $('input').val();
-
-    window.location = "/search/" + query + "/all/" + counter
+    var Qtype = Qtype || "all";
+    var counter = 0;
+    window.location = "/search/" + query + "/" + Qtype + "/" + counter
   })
-
 
   $("body").keydown(function(e) {
     if (e.keyCode == 39) {
@@ -46,7 +47,7 @@ $.ajax({
       counter = window.location.pathname.replace(/(...+\/)/, '');
       counter++
 
-      window.location = "/search/" + query + "/all/" + counter
+      window.location = "/search/" + query + "/" + Qtype + counter
     }
   });
 
@@ -59,11 +60,9 @@ $.ajax({
     query = matcharr[1]
     Qtype = matcharr[2]
 
-
     var Qtype = $(this).attr('id');
     window.location = "/search/" + query + "/" + Qtype + "/" + counter
 
   })
-
 
 });

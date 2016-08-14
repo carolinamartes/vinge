@@ -12,12 +12,27 @@
 }
 
 .searchBar{
-  width:60%;
+  width:40%;
+  /*margin-bottom: 0;
+  padding-bottom: 0;*/
+  position: relative;
+
 }
 
 .search{
   width: 90%;
 }
+/*
+#suggestions-nav{
+  padding-top: 0;
+  margin-top: 0;
+  width: 30%;
+  opacity: 0;
+  background-color: white;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}*/
 
 .main-container{
   width: 70%;
@@ -36,4 +51,13 @@ body{
 #user_logo:hover{
   background-color: #eeeeee;
   cursor: default;
+}
+
+h6{
+  color: #d32f2f;
+  position: absolute;
+  text-align: center;
+  width: 30%;
+  top: 20px;
+  margin: auto 40vw;
 }

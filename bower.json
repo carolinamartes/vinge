@@ -1,0 +1,24 @@
+{
+  "name": "carolina",
+  "description": "Youtube video binging",
+  "main": "app.js",
+  "authors": [
+    "Carolina Martes"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "binge"
+  ],
+  "homepage": "https://github.com/carolinamartes/vinge",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery-autocompleter": "Autocompleter#^0.1.9"
+  }
+}

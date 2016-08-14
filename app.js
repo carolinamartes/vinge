@@ -17,12 +17,13 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 app.get('/autocomplete/:input', function(req,res){
+  data=null;
   var input= req.params.input;
   var url= "http://www.omdbapi.com/?t=" + input + "&r=json";
   request(url, function(error, response, data) {
     if (!error && response.statusCode == 200) {
     var movie_data = JSON.parse(data);
-    var title = movie_data.Title;
+    var title= movie_data.Title;
     console.log(title)
     res.send(title)
     }

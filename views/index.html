@@ -5,8 +5,7 @@
   <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link type="text/css" rel="stylesheet" href="/css/materialize.min.css" media="screen,projection">
   <link href="/css/main.css" rel="stylesheet" type="text/css">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/easy-autocomplete/1.3.5/easy-autocomplete.min.css" rel="stylesheet">
-
+   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
 </head>
 
 <body>
@@ -19,20 +18,29 @@
   </ul>
   <nav class="grey lighten-3">
     <div class="nav-wrapper grey lighten-3">
+          <h6 class="red-text text-darken-2 center" id="suggestions"></h6>
       <ul class="right red-text text-darken-2">
-        <li><a class="dropdown-button grey-text" href="#!" data-activates="dropdown1">All<i class="material-icons right">arrow_drop_down</i></a></li>
+        <li><a class="dropdown-button red-text text-darken-2" href="#!" data-activates="dropdown1">All<i class="material-icons right">arrow_drop_down</i></a></li>
         <li><a class="red-text text-darken-2" id="user_logo">{{email}}</a></li>
         <li><a class="red-text text-darken-2" href="/sessions/logout">Logout</a></li>
       </ul>
-      <form class="searchBar browser-default" action="submit">
+      <form class="searchBar browser-default">
         <div class="input-field red-text text-darken-2" id="input-field1">
-          <input placeholder="Search for artist, movie, or TV show recommendations" class="red-text text-darken-2 search autocomplete" id="autocomplete_input" type="search" required>
+          <input placeholder="Search for artist, movie, or TV show recommendations" class="grey-text search autocomplete" id="autocomplete-input" type="search" required>
           <label for="search"><i class="material-icons red-text text-darken-2">search</i></label>
           <i class="material-icons">close</i>
         </div>
       </form>
     </div>
+    <!-- <nav id="suggestions-nav"> -->
+      <!-- <div class="nav-wrapper center" id="suggestions-wrapper">
+        <div class="suggestions" id="suggestions-div"> -->
+
+        <!-- </div>
+      </div> -->
+    <!-- </nav> -->
   </nav>
+
   <div class="main-container">
     <div class="video-container">
       <nav class="red darken-2" id="prefs">
@@ -57,4 +65,5 @@
 <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 <script type="text/javascript" src="/js/materialize.min.js"></script>
 <script type="text/javascript" src="/js/script.js"></script>
+ <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 </html>
