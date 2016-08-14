@@ -13,7 +13,7 @@ $(document).ready(function() {
       "url": "/autocomplete/" + input,
       "success": function(data) {
         console.log(data)
-        $('#suggestions').text(data.Name + " : " +data.Type)
+        $('#suggestions').text(data)
       },
       "error": function() {
         console.log("error")

@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
-app.get('/autocomplete/:input', function(req,res){
+
 
   app.get('/autocomplete/:input', function(req,res){
       var input= req.params.input;
@@ -27,11 +27,11 @@ var movie_data = JSON.parse(data);
 var title= movie_data.Title;
 console.log(title)
 res.send(title)
-        }		      
+        }
 
-    }
+    })
   })
-})
+
 
 app.get('/search/:query/:Qtype/:counter/', function(req, res) {
   var query = req.params.query;
