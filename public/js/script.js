@@ -4,9 +4,6 @@ $(document).ready(function() {
   $('select').material_select();
   $(".dropdown-button").dropdown();
 
-  $("input.autocomplete").on("click", function() {
-    $('#suggestions-nav').css("opacity", 1)
-  })
 
   $("input.autocomplete").on('keypress', function() {
     var input = $('input').val();
@@ -16,7 +13,7 @@ $(document).ready(function() {
       "url": "/autocomplete/" + input,
       "success": function(data) {
         console.log(data)
-        $('#suggestions').text(data)
+        $('#suggestions').text(data.Name + " : " +data.Type)
       },
       "error": function() {
         console.log("error")
