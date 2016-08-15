@@ -1,9 +1,4 @@
 
-.searchBar {
-    font-family: GillSans, sans-serif;
-    font-size: 2em;
-    font-weight: 500;
-  }
 
 .pref{
   width: 15%;
@@ -23,13 +18,15 @@
 }
 
 .searchBar{
-  width:50%;
-  position: relative;
+  width:40%;
+  font-family: GillSans, sans-serif;
 
 }
 
 .search{
   width: 90%;
+  font-size: 2em;
+  font-weight: 500;
 }
 
 
@@ -54,18 +51,11 @@ body{
   cursor: default;
 }
 
-
-.autoText:hover{
-  cursor: pointer;
-  font-size: 1.7em;
-  top:20px;
+.autoText, .autoOptions, #suggestions{
+  font-size: 0.9em;
 }
 
-h6{
-  color: #d32f2f;
-  position: absolute;
-  text-align: center;
-  width: 30%;
-  top: 25px;
-  margin: auto 45vw;
+.autoText, .autoOptions, #suggestions:hover{
+  cursor: pointer;
+  font-size: 1em;
 }

@@ -10,18 +10,19 @@
 
 <body>
   <ul id="dropdown1" class="dropdown-content">
-    <li><a class= "grey-text mediaOptions" id="movies">Movies</a></li>
+    <li><a class= "red-text mediaOptions" id="movies">Movies</a></li>
     <li class="divider"></li>
-    <li><a class= "grey-text mediaOptions" id="shows">TV Shows</a></li>
+    <li><a class= "red-text mediaOptions" id="shows">TV Shows</a></li>
     <li class="divider"></li>
-    <li><a class= "grey-text mediaOptions" id="music">Music</a></li>
+    <li><a class= "red-text mediaOptions" id="music">Music</a></li>
   </ul>
   <nav class="grey lighten-3">
     <div class="nav-wrapper grey lighten-3">
-          <h6 class="grey-text center autoText" id="suggestions"><a class="autoOptions"></a></h6>
+
       <ul class="right red-text2">
+        <li class="auto"><a class="grey-text brand-logo center autoText autoOptions" id="suggestions"></a></li>
         <li><a class="dropdown-button red-text " href="#!" data-activates="dropdown1">All Media<i class="material-icons right">arrow_drop_down</i></a></li>
-        <li><a class="red-text" id="user_logo">{{email}}</a></li>
+        <li><a class="grey-text" id="user_logo">{{email}}</a></li>
         <li><a class="red-text" id="logout" href="/sessions/logout">Logout</a></li>
       </ul>
       <form class="searchBar">
@@ -38,7 +39,7 @@
     <div class="video-container">
       <nav class="red darken-2" id="prefs">
         <ul>
-          <li class= "pref"><a class= "brand-logo" id="logo">Vinge</a></li>
+          <li class= "pref"><a class= "brand-logo left" id="logo">Vinge</a></li>
           <li class= "pref right orange lighten-3" id="meh"><a class="react">Meh</a></li>
           <li class= "pref right amber accent-4" id="dislike"><a class="react" >Dislike</a></li>
           <li class= "pref right light-blue accent-2" id="like"><a class="react">Like</a></li>
