@@ -36,7 +36,8 @@ $.ajax({
   "method": "POST",
   "data": newPref,
   "success": function(data){
-    console.log('ajax call was good.')
+    console.log(data)
+      Materialize.toast(data, 3000)
   },
   "error": function(){
     console.log("error")
@@ -44,7 +45,7 @@ $.ajax({
 })
 })
 
-  $("input.autocomplete").on('keypress', function() {
+  $("#autocomplete-input").on('keypress', function() {
     var input = $('input').val();
 
     $.ajax({
@@ -80,21 +81,26 @@ $('.autoText').on('click', function(e) {
   window.location = "/search/" + query + "/" + Qtype + "/" + counter
 })
 
+function getNext(){
+  var myString = window.location.pathname;
+  var myRegexp = /\/search\/(.*)\/\d/;
+  var match = myRegexp.exec(myString);
+  var query = match[1]
+
+  counter = window.location.pathname.replace(/(...+\/)/, '');
+  counter++
+
+  window.location = "/search/" + query + "/" + Qtype + counter
+}
 
   $("body").keydown(function(e) {
     if (e.keyCode == 39) {
-
-      var myString = window.location.pathname;
-      var myRegexp = /\/search\/(.*)\/\d/;
-      var match = myRegexp.exec(myString);
-      var query = match[1]
-
-      counter = window.location.pathname.replace(/(...+\/)/, '');
-      counter++
-
-      window.location = "/search/" + query + "/" + Qtype + counter
+      getNext()
     }
   });
+  $('.btn-floating').on('click', function(){
+    getNext()
+  })
 
   $(".mediaOptions").on("click", function() {
 

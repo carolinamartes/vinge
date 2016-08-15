@@ -18,30 +18,30 @@
   </ul>
   <nav class="grey lighten-3">
     <div class="nav-wrapper grey lighten-3">
-          <h6 class="red-text text-darken-2 center autoText" id="suggestions"><a class="autoOptions"></a></h6>
-      <ul class="right red-text text-darken-2">
-        <li><a class="dropdown-button red-text text-darken-2" href="#!" data-activates="dropdown1">All<i class="material-icons right">arrow_drop_down</i></a></li>
-        <li><a class="red-text text-darken-2" id="user_logo">{{email}}</a></li>
-        <li><a class="red-text text-darken-2" href="/sessions/logout">Logout</a></li>
+          <h6 class="grey-text center autoText" id="suggestions"><a class="autoOptions"></a></h6>
+      <ul class="right red-text2">
+        <li><a class="dropdown-button red-text " href="#!" data-activates="dropdown1">All Media<i class="material-icons right">arrow_drop_down</i></a></li>
+        <li><a class="red-text" id="user_logo">{{email}}</a></li>
+        <li><a class="red-text" id="logout" href="/sessions/logout">Logout</a></li>
       </ul>
       <form class="searchBar">
         <div class="input-field red-text text-darken-2" id="input-field1">
-          <input placeholder="Search for artist, movie, or TV show recommendations" class="grey-text search autocomplete" id="autocomplete-input" type="search" required>
+          <input placeholder="Search for artist, movie, or TV show recommendations" class="grey-text search" id="autocomplete-input" type="search" required>
           <label for="search"><i class="material-icons red-text text-darken-2">search</i></label>
           <i class="material-icons">close</i>
         </div>
       </form>
     </div>
   </nav>
-
+<div class="container-play">
   <div class="main-container">
     <div class="video-container">
       <nav class="red darken-2" id="prefs">
         <ul>
           <li class= "pref"><a class= "brand-logo" id="logo">Vinge</a></li>
-          <li class= "pref right orange lighten-3" id="meh"><a href="#" >Meh</a></li>
-          <li class= "pref right amber accent-4" id="dislike"><a href="#" >Dislike</a></li>
-          <li class= "pref right light-blue accent-2" id="like"><a href="#" >Like</a></li>
+          <li class= "pref right orange lighten-3" id="meh"><a class="react">Meh</a></li>
+          <li class= "pref right amber accent-4" id="dislike"><a class="react" >Dislike</a></li>
+          <li class= "pref right light-blue accent-2" id="like"><a class="react">Like</a></li>
         </ul>
       </nav>
       <div class="video-container">
@@ -51,6 +51,13 @@
           </iframe>
         </div>
       </div>
+    </div>
+  </div>
+
+    <div class="fixed-action-btn horizontal" style="bottom: 45vh; right: 44px;">
+      <a class="btn-floating btn-large red">
+        <i class="material-icons">skip_next</i>
+      </a>
     </div>
   </div>
 </body>

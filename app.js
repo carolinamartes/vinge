@@ -25,9 +25,11 @@ app.post('/preferences', function(req, res) {
   db.none(
       'INSERT INTO preferences (preference,type,name,user_email) VALUES ($1,$2,$3,$4)', [newPref.preference, newPref.type, newPref.name, newPref.user_email])
     .catch(function() {
+      res.send("Oops, couldn't save your stuff. Make sure you are logged in.")
       console.log("error")
       next();
     }).then(function(user) {
+      res.send("Saved!")
       console.log("Submitted prefs!")
     });
 });
