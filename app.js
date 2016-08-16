@@ -23,7 +23,7 @@ app.post('/preferences', function(req, res) {
   var newPref = req.body;
   console.log(newPref)
   db.none(
-      'INSERT INTO preferences (preference,type,name,user_email) VALUES ($1,$2,$3,$4)', [newPref.preference, newPref.type, newPref.name, newPref.user_email])
+      'INSERT INTO preferences (preference,type,name, yID, user_email) VALUES ($1,$2,$3,$4,$5)', [newPref.preference, newPref.type, newPref.name, newPref.yID, newPref.user_email])
     .catch(function() {
       res.send("Oops, couldn't save your stuff. Make sure you are logged in.")
       console.log("error")
@@ -33,6 +33,13 @@ app.post('/preferences', function(req, res) {
       console.log("Submitted prefs!")
     });
 });
+
+
+
+  // app.get('preferences/user', function(req, res) {
+  //     res.render('likes/user', )
+  //     console.log("yay!")
+  //   });
 
 app.get('/autocomplete/:input', function(req, res) {
   var input = req.params.input;
@@ -57,8 +64,9 @@ app.get('/search/:query/:Qtype/:counter/', function(req, res) {
   request(url, function(error, response, data) {
     if (!error && response.statusCode == 200) {
       var data = JSON.parse(data);
+      console.log(data)
       var currentVideo = data.Similar.Results[videoCounter];
-      res.render('index', currentVideo)
+      res.render('index', currentVideo);
     }
   })
 })

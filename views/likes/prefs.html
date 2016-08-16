@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- <link rel="icon" href="/v.png" type="image/x-icon"/> -->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="/../css/materialize.min.css" media="screen,projection">
+    <link href="/css/main.css" rel="stylesheet" type="text/css">
+     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+    <title>Vinging Preferences</title>
+  </head>
+  <body>
+    <h3 id="user_logo"></h3>
+    <h6 id="liked_videos">Likes</h6>
+      <div class="carousel carousel-slider">{{preference}}
+      <p>{{type}}</p>
+      {{name}}
+      {{yID}}
+      </div>
+    <h6 id="disliked_videos">Dislikes</h6>
+      <div class="carousel carousel-slider">
+        <a class="carousel-item" href="#one!"><img src="http://img.youtube.com/vi/"+ {{yID}}+"/0.jpg"></a>
+      </div>
+
+    <h6 id="mehed_videos">Mehs</h6>
+      <div class="carousel carousel-slider">
+        <a class="carousel-item" href="#one!"><img src=""></a>
+      </div>
+  </body>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+  <script type="text/javascript" src="/js/materialize.min.js"></script>
+  <script type="text/javascript" src="/js/prefs.js"></script>
+   <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+</html>

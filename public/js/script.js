@@ -15,21 +15,35 @@ user_email= sessionStorage.getItem('user_email');
 $('#user_logo').text(user_email);
 }
 
+$('#user_logo').on('click', function(){
+  var email= $('#user_logo').text();
+  $.ajax({
+    "url": "/likes/prefs",
+    "method": "GET",
+    "success": function(){
+      window.location="/likes/prefs"
+    },
+    "error": function(){
+      console.log("error")
+    }
+  })
+
+
+})
+
 
 $('.pref').on("click", function(){
 
 var preference = $(this).attr('id');
 var type= $(".mediaOptions").val() || "all";
-
+var yID = $('.hiddenID').text()
 var myString = window.location.pathname;
 var myRegexp = /(search)\/(.*)\/(all|music|movies|shows)/
 var match = myRegexp.exec(myString);
 var matcharr = match[0].split('/');
 var name = matcharr[1];
 
-var newPref= {preference:preference,type:type,name:name,user_email:user_email}
-
-
+var newPref= {preference:preference,type:type,name:name,yID:yID,user_email:user_email}
 
 $.ajax({
   "url": "/preferences",
@@ -115,5 +129,12 @@ function getNext(){
     window.location = "/search/" + query + "/" + Qtype + "/" + counter
 
   })
+
+
+
+
+
+
+
 
 });

@@ -13,6 +13,9 @@
     height:100%;
 }
 
+.hiddenID{
+  display: none;
+}
 .video-div{
   background-color: black;
 }
@@ -46,10 +49,10 @@ body{
   background-color: #d32f2f;
   cursor: default;
 }
-#user_logo:hover{
+/*#user_logo:hover{
   background-color: #eeeeee;
   cursor: default;
-}
+}*/
 
 .autoText, .autoOptions, #suggestions{
   font-size: 0.9em;
