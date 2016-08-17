@@ -8,7 +8,7 @@ const request = require('request');
 const env = require('dotenv').config();
 const pgp = require('pg-promise')();
 const db = pgp('postgres://carolinamartes@localhost:5432/auth_p2');
-
+var port= Number(process.env.PORT || 3000)
 
 app.engine('html', mustacheExpress());
 app.set('view engine', 'html');
@@ -138,9 +138,7 @@ app.use(session({
 
 app.use(flash());
 
-// app.listen(3000, function() {
-//   console.log('Server works on port 3000!');
-// });
+app.listen(port);
 
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
