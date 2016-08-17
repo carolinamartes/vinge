@@ -96,7 +96,7 @@ $(document).ready(function() {
   var Qtype = Qtype || "";
 
   $('.searchBar').on('submit', function(e) {
-    $('#welcome').hide()
+    $('#welcome').remove()
     e.preventDefault();
     query = $('input').val();
     var Qtype = Qtype || "all";
