@@ -77,6 +77,7 @@ $(document).ready(function() {
   })
 
   $("#autocomplete-input").on('keypress', function() {
+    $('#welcome').remove()
     var input = $('input').val();
     $.ajax({
       "method": "get",
@@ -96,7 +97,6 @@ $(document).ready(function() {
   var Qtype = Qtype || "";
 
   $('.searchBar').on('submit', function(e) {
-    $('#welcome').remove()
     e.preventDefault();
     query = $('input').val();
     var Qtype = Qtype || "all";
