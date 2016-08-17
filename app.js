@@ -7,8 +7,9 @@ const flash = require('connect-flash');
 const request = require('request');
 const env = require('dotenv').config();
 const pgp = require('pg-promise')();
-const db = pgp('postgres://lybtopytzzzqbf:wUHMkDGqj2-oTUith7hiqN5PM8@ec2-54-243-48-181.compute-1.amazonaws.com:5432/dam43ogo8qjd53');
-var port= Number(process.env.PORT || 3000)
+const db = pgp('postgres://carolinamartes@localhost:5432/auth_p2')
+// const db = pgp('postgres://lybtopytzzzqbf:wUHMkDGqj2-oTUith7hiqN5PM8@ec2-54-243-48-181.compute-1.amazonaws.com:5432/dam43ogo8qjd53');
+var port = Number(process.env.PORT || 3000)
 
 app.engine('html', mustacheExpress());
 app.set('view engine', 'html');
@@ -50,53 +51,52 @@ app.delete('/preferences', function(req, res) {
     });
 });
 
+app.get('favorites/all', function(req, res){
+  res.render('favorites/all')
+})
+
+
 
 ///put now
 app.put('/preferences', function(req, res) {
   var updatePref = req.body;
   console.log(updatePref)
   db.none(
-      'UPDATE preferences SET preference= $1 WHERE user_email=$2 AND name=$3', [updatePref.preference, updatePref.user_email, updatePref.name]
-    ).catch(function() {
-      res.send("Oops, couldn't update. Make sure you are signed in")
-      console.log("error")
-      next();
-    }).then(function(user) {
-      res.send("Saved!")
-      console.log("updated prefs!")
-    });
+    'UPDATE preferences SET preference= $1 WHERE user_email=$2 AND name=$3', [updatePref.preference, updatePref.user_email, updatePref.name]
+  ).catch(function() {
+    res.send("Oops, couldn't update. Make sure you are signed in")
+    console.log("error")
+    next();
+  }).then(function(user) {
+    res.send("Saved!")
+    console.log("updated prefs!")
+  });
 });
 
 
 app.get('/preferences', function(req, res) {
-  var getPref= req.body;
+  var getPref = req.body;
 
   console.log("user_email" + email)
-    db.any(
-      'SELECT DISTINCT ON (name,preference) name, yID, preference FROM preferences WHERE user_email=$1', [getPref.user_email]
-    ).catch(function(){
-      res.error = 'Error. Could not retrieve user prefs.';
-      next();
-    }).then(function(prefs){
+  db.any(
+    'SELECT DISTINCT ON (name,preference) name, yID, preference FROM preferences WHERE user_email=$1', [getPref.user_email]
+  ).catch(function() {
+    res.error = 'Error. Could not retrieve user prefs.';
+    next();
+  }).then(function(prefs) {
 
-      var userData={
-        'email' : user_email,
-        'preferences' : prefs,
+    var userData = {
+        'email': user_email,
+        'preferences': prefs,
       }
       // var location=location.pathname
-        res.send(userData)
+    res.send(userData)
 
 
-      console.log("Requested prefs!")
-    });
+    console.log("Requested prefs!")
+  });
 });
 
-
-
-  // app.get('preferences/user', function(req, res) {
-  //     res.render('likes/user', )
-  //     console.log("yay!")
-  //   });
 
 app.get('/autocomplete/:input', function(req, res) {
   var input = req.params.input;

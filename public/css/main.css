@@ -1,5 +1,14 @@
-#big-container{
+.main{
   overflow: hidden;
+}
+.red-button{
+  position: fixed;
+}
+
+.default{
+    background-color: #eeeeee;
+      text-align: center;
+      margin-top: 150px;
 }
 
 .pref{
@@ -50,10 +59,7 @@
   height: 80vh;
   margin-bottom: 70px;
 }
-/*
-body{
-    overflow: hidden;
-}*/
+
 .mediaName{
 margin: 25px 0;
 }
@@ -62,10 +68,6 @@ margin: 25px 0;
   background-color: #d32f2f;
   cursor: default;
 }
-/*#user_logo:hover{
-  background-color: #eeeeee;
-  cursor: default;
-}*/
 
 .autoText, .autoOptions, #suggestions{
   font-size: 0.9em;

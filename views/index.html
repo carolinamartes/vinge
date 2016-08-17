@@ -1,73 +1,72 @@
 <!doctype html>
 <html>
-
 <head>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
-  <!-- <link rel="icon" href="v.png" type="image.png"> -->
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link type="text/css" rel="stylesheet" href="/css/materialize.min.css" media="screen,projection">
   <link href="/css/main.css" rel="stylesheet" type="text/css">
-   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
 </head>
-
-<body>
+<body class="main">
   <div id="big-container">
-  <ul id="dropdown1" class="dropdown-content">
-    <li><a class= "red-text mediaOptions" id="movies">Movies</a></li>
-    <li class="divider"></li>
-    <li><a class= "red-text mediaOptions" id="shows">TV Shows</a></li>
-    <li class="divider"></li>
-    <li><a class= "red-text mediaOptions" id="music">Music</a></li>
-  </ul>
-  <nav class="grey lighten-3">
-    <div class="nav-wrapper grey lighten-3">
-
-      <ul class="right red-text2">
-        <li class="auto"><a class="grey-text brand-logo center autoText autoOptions" id="suggestions"></a></li>
-        <li><a class="dropdown-button red-text " href="#!" data-activates="dropdown1">All Media<i class="material-icons right">arrow_drop_down</i></a></li>
-        <li><a class="grey-text" id="user_logo">{{email}}</a></li>
-        <li><a class="red-text" id="logout" href="/sessions/logout">Logout</a></li>
-      </ul>
-      <form class="searchBar">
-        <div class="input-field red-text text-darken-2" id="input-field1">
-          <input placeholder="Search for artist, movie, or TV show recommendations" class="grey-text search" id="autocomplete-input" type="search" required>
-          <label for="search"><i class="material-icons red-text text-darken-2">search</i></label>
-          <i class="material-icons">close</i>
-        </div>
-      </form>
-    </div>
-  </nav>
-<div class="container-play">
-  <div class="main-container">
-    <div class="video-container">
-      <nav class="red darken-2" id="prefs">
-        <ul>
-          <li class= "pref"><a class= "brand-logo left" id="logo">Vinge</a></li>
-          <li class= "pref right orange lighten-3" id="meh"><a class="react">Meh</a></li>
-          <li class= "pref right amber accent-4" id="dislike"><a class="react" >Dislike</a></li>
-          <li class= "pref right light-blue accent-2" id="like"><a class="react">Like</a></li>
+    <ul id="dropdown1" class="dropdown-content">
+      <li><a class="red-text mediaOptions" id="movies">Movies</a></li>
+      <li class="divider"></li>
+      <li><a class="red-text mediaOptions" id="shows">TV Shows</a></li>
+      <li class="divider"></li>
+      <li><a class="red-text mediaOptions" id="music">Music</a></li>
+    </ul>
+    <nav class="grey lighten-3">
+      <div class="nav-wrapper grey lighten-3">
+        <ul class="right red-text2">
+          <li class="auto">
+            <a class="grey-text brand-logo center autoText autoOptions" id="suggestions"></a>
+          </li>
+          <li><a class="dropdown-button red-text " href="#!" data-activates="dropdown1">All Media<i class="material-icons right">arrow_drop_down</i></a></li>
+          <li><a class="grey-text" id="user_logo" href="/favorites/all">History</a></li>
+          <li><a class="red-text" id="logout" href="/sessions/logout">Logout</a></li>
         </ul>
-      </nav>
-      <div class="video-container">
-        <div class="video-div">
-          <iframe frameborder="0"
-          src="{{yUrl}}">
-          </iframe>
+        <form class="searchBar">
+          <div class="input-field red-text text-darken-2" id="input-field1">
+            <input placeholder="Search for artist, movie, or TV show recommendations" class="grey-text search" id="autocomplete-input" type="search" required>
+            <label for="search"><i class="material-icons red-text text-darken-2">search</i></label>
+            <i class="material-icons">close</i>
+          </div>
+        </form>
+      </div>
+    </nav>
+    <div class="container-play">
+      <div class="main-container">
+        <div class="video-container">
+          <nav class="red darken-2" id="prefs">
+            <ul>
+              <li class="pref"><a class="brand-logo left" id="logo">Vinge</a></li>
+              <li class="pref right orange lighten-3" id="meh"><a class="react">Meh</a></li>
+              <li class="pref right amber accent-4" id="dislike"><a class="react">Dislike</a></li>
+              <li class="pref right light-blue accent-2" id="like"><a class="react">Like</a></li>
+            </ul>
+          </nav>
+          <div class="video-container">
+            <div class="video-div">
+                {{#yUrl}}
+              <iframe frameborder="0" src="{{yUrl}}">
+              </iframe>
+                {{/yUrl}}
+                {{^yUrl}}
+                <h3 class="default center grey-text">Search things you like to start vinging!</h3>
+                {{/yUrl}}
+            </div>
+          </div>
         </div>
       </div>
+      <div class="fixed-action-btn" id="red-button" style="position:fixed; bottom: 50%; right: 24px;">
+        <a class="btn-floating btn-large red">
+          <i class="material-icons">skip_next</i>
+        </a>
+      </div>
     </div>
-  </div>
-    <div class="fixed-action-btn" style="position:fixed; bottom: 50%; right: 24px;">
-      <a class="btn-floating btn-large red">
-        <i class="material-icons">skip_next</i>
-      </a>
-    </div>
-  </div>
-  <div id="target">
-
-         <!-- <h2 class="center">History</h2> -->
-         {{#preferences}}
-
+    <!-- <div id="target">
+      {{#preferences}}
       <h4 class="center mediaName">{{name}}</h4>
       <h5 class="center">{{preference}}</h5>
       <div class="buttons center">
@@ -76,20 +75,18 @@
         <button id="{{name}}" class="meh waves-effect waves-light btn updt" value="meh">Meh</button>
         <button id="{{name}}" class="delete waves-effect waves-light btn updt" value="delete">Delete that!</button>
       </div>
-
-        {{#yid}}
-          <img src="http://img.youtube.com/vi/{{yid}}/2.jpg"></img></a>
-        {{/yid}}
-        {{^yid}}
-            <!--  dont do anything -->
-        {{/yid}}
-    {{/preferences}}
+      {{#yid}}
+      <img src="http://img.youtube.com/vi/{{yid}}/2.jpg"></img>
+      </a>
+      {{/yid}} {{^yid}}
+      {{/yid}}
+      {{/preferences}}
+    </div> -->
   </div>
-</div>
 </body>
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 <script type="text/javascript" src="/js/materialize.min.js"></script>
 <script type="text/javascript" src="/js/script.js"></script>
- <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 </html>

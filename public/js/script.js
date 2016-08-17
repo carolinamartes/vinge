@@ -16,28 +16,18 @@ $(document).ready(function() {
     $('#user_logo').text(user_email);
   }
 
-  $('#user_logo').on('click', function() {
+  // $('#user_logo').on('click', function() {
 
+    // $.ajax({
+    //   type: 'GET',
+    //   url: '/favorites/favs',
+    //   success: function() {
+    //     location.pathname='favorites/all'
+    //     console.log("got it!")
+    //   }
+    // })
 
-
-
-    $.ajax({
-      type: 'GET',
-      url: '/preferences',
-      success: function() {
-        //  location.reload();
-        console.log("got it!")
-        $("big-container").css({
-          "overflow": "visible"
-        });
-
-
-      }
-    })
-
-
-
-  })
+  // })
 
 
 
