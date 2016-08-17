@@ -25,5 +25,14 @@
     "promise": "^7.1.1",
     "request": "^2.74.0",
     "urlgrey": "^0.4.4"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carolinamartes/vinge.git"
+  },
+  "bugs": {
+    "url": "https://github.com/carolinamartes/vinge/issues"
+  },
+  "homepage": "https://github.com/carolinamartes/vinge#readme"
 }
