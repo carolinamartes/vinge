@@ -16,7 +16,9 @@
 }
 
 #welcome{
-  margin-top: 20px;
+  margin-top: 50px;
+    background-color: #eeeeee;
+    color:  #424242;
 }
 
 .updt{
