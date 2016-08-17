@@ -138,9 +138,9 @@ app.use(session({
 
 app.use(flash());
 
-app.listen(3000, function() {
-  console.log('Server works on port 3000!');
-});
+// app.listen(3000, function() {
+//   console.log('Server works on port 3000!');
+// });
 
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
