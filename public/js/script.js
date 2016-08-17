@@ -77,7 +77,8 @@ $(document).ready(function() {
   })
 
   $("#autocomplete-input").on('keypress', function() {
-    $('#welcome').remove()
+    $('#welcome').css("display", "none")
+    $('#welcome').css("opacity", 0)
     var input = $('input').val();
     $.ajax({
       "method": "get",
