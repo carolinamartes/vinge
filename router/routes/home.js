@@ -9,10 +9,7 @@ router.get('/', function(req, res) {
   if (!req.session.user) {
     res.redirect('sessions/new');
   } else {
-      var userData = {
-        'email': req.session.user.email,
-      }
-      res.render('index', userData);
+      res.render('index',{ 'email': req.session.user.email });
     };
   })
 
