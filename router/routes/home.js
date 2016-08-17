@@ -9,20 +9,12 @@ router.get('/', function(req, res) {
   if (!req.session.user) {
     res.redirect('sessions/new');
   } else {
-    // db.any(
-    //   'SELECT DISTINCT ON (name,preference) name, yID, preference FROM preferences WHERE user_email=$1', [req.session.user.email]
-    // ).catch(function() {
-    //   res.error = 'Error. Could not retrieve user prefs.';
-    //   next();
-    // }).then(function(prefs) {
-    //   var userData = {
-    //     'email': req.session.user.email,
-    //     'preferences': prefs,
-    //   }
-      res.render('index');
-    // });
-  }
-})
+      var userData = {
+        'email': req.session.user.email,
+      }
+      res.render('index', userData);
+    };
+  })
 
 
 

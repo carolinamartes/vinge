@@ -23,7 +23,7 @@
             <a class="grey-text brand-logo center autoText autoOptions" id="suggestions"></a>
           </li>
           <li><a class="dropdown-button red-text " href="#!" data-activates="dropdown1">All Media<i class="material-icons right">arrow_drop_down</i></a></li>
-          <li><a class="grey-text" id="user_logo" href="/favorites/all">History</a></li>
+          <li><a class="grey-text" id="user_logo" href="/favorites/all">{{name}}</a></li>
           <li><a class="red-text" id="logout" href="/sessions/logout">Logout</a></li>
         </ul>
         <form class="searchBar">
@@ -65,23 +65,6 @@
         </a>
       </div>
     </div>
-    <!-- <div id="target">
-      {{#preferences}}
-      <h4 class="center mediaName">{{name}}</h4>
-      <h5 class="center">{{preference}}</h5>
-      <div class="buttons center">
-        <button id="{{name}}" class="like waves-effect waves-light btn updt" value="like">Like</button>
-        <button id="{{name}}" class="dislike waves-effect waves-light btn updt" value="dislike">Dislike</button>
-        <button id="{{name}}" class="meh waves-effect waves-light btn updt" value="meh">Meh</button>
-        <button id="{{name}}" class="delete waves-effect waves-light btn updt" value="delete">Delete that!</button>
-      </div>
-      {{#yid}}
-      <img src="http://img.youtube.com/vi/{{yid}}/2.jpg"></img>
-      </a>
-      {{/yid}} {{^yid}}
-      {{/yid}}
-      {{/preferences}}
-    </div> -->
   </div>
 </body>
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
