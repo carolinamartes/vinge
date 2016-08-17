@@ -10,6 +10,17 @@ console.log(user_email)
     },
     "success": function(data){
 
+      for (var i=0;i<data.length;i++){
+      if (data[i].yid!==""){
+      var src= "http://img.youtube.com/vi/"+ data[i].yid + "/2.jpg";
+      document.write('<img class="carousel-item" src="' + src + '"></i>')
+      $('img').appendTo($("<div class= 'carousel-slider'>").appendTo($('body')))
+      }
+      else{
+        $("<a class='carousel-item'>").text(name).appendTo($("<div class= 'carousel-slider'>"))
+      }
+      // $("<a class='carousel carousel-slider'>").append($('img')).appendTo($('.carousel-slider'))
+}
     console.log("yay", data)
     },
     "error": function(){

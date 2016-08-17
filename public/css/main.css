@@ -1,4 +1,6 @@
-
+body{
+  overflow: hidden;
+}
 
 .pref{
   width: 15%;
@@ -38,11 +40,12 @@
   margin: 1% auto;
   background-color: #eeeeee;
   height: 80vh;
+  margin-bottom: 100px;
 }
-
+/*
 body{
     overflow: hidden;
-}
+}*/
 
 
 #logo:hover{

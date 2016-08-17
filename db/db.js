@@ -59,23 +59,23 @@ var create_user = function(req, res, next){
   });
 };
 
-var get_prefs= function(req, res, next){
-var user_email=req.body.user_email;
-console.log( "user email at db" + user_email);
+// var get_prefs= function(req, res, next){
+// var user_email=req.body.user_email;
+// console.log( "user email at db" + user_email);
+//
+// db.any(
+//   'SELECT DISTINCT ON (name) name, yID FROM preferences WHERE user_email=$1 ORDER BY preference', [user_email]
+// ).catch(function(){
+//   res.error = 'Error. Could not retrieve user prefs.';
+//   next();
+// }).then(function(prefs){
+//   console.log("data at db " + prefs)
+//   req.prefs = prefs;
+//
+//     console.log("req.prefs" + req.prefs)
+//     next();
+// });
+// };
 
-db.any(
-  'SELECT * FROM preferences WHERE user_email=$1', [user_email]
-).catch(function(){
-  res.error = 'Error. Could not retrieve user prefs.';
-  next();
-}).then(function(prefs){
-  console.log("data at db " + prefs)
-  req.prefs = prefs;
 
-    console.log("req.prefs" + req.prefs)
-    next();
-});
-};
-
-
-module.exports = { login, logout, create_user, get_prefs };
+module.exports = { login, logout, create_user };

@@ -1,13 +1,14 @@
 const express = require('express');
 const app = express();
 const mustacheExpress = require('mustache-express');
-const bodyParser = require("body-parser");
+const bodyParser = require('body-parser');
 const session = require('express-session');
 const flash = require('connect-flash');
 const request = require('request');
 const env = require('dotenv').config();
 const pgp = require('pg-promise')();
 const db = pgp('postgres://carolinamartes@localhost:5432/auth_p2');
+
 
 app.engine('html', mustacheExpress());
 app.set('view engine', 'html');
@@ -31,6 +32,56 @@ app.post('/preferences', function(req, res) {
     }).then(function(user) {
       res.send("Saved!")
       console.log("Submitted prefs!")
+    });
+});
+
+app.delete('/preferences', function(req, res) {
+  var deletePref = req.body;
+  console.log(deletePref)
+  db.none(
+      'DELETE FROM preferences WHERE name=$1 AND user_email=$2', [deletePref.name, deletePref.user_email])
+    .catch(function() {
+      res.send("Sorry, couldn't delete.")
+      console.log("error")
+      next();
+    }).then(function(user) {
+      res.send("Deleted!")
+      console.log("Deleted prefs!")
+    });
+});
+
+
+///put now
+app.put('/preferences', function(req, res) {
+  var updatePref = req.body;
+  console.log(updatePref)
+  db.none(
+      'UPDATE preferences SET preference= $1 WHERE user_email=$2 AND name=$3', [updatePref.preference, updatePref.user_email, updatePref.name]
+    ).catch(function() {
+      res.send("Oops, couldn't update. Make sure you are signed in")
+      console.log("error")
+      next();
+    }).then(function(user) {
+      res.send("Saved!")
+      console.log("updated prefs!")
+    });
+});
+
+
+app.get('/preferences', function(req, res) {
+    db.any(
+      'SELECT DISTINCT ON (name,preference) name, yID, preference FROM preferences WHERE user_email=$1', [req.session.user.email]
+    ).catch(function(){
+      res.error = 'Error. Could not retrieve user prefs.';
+      next();
+    }).then(function(prefs){
+
+      var userData={
+        'email' : req.session.user.email,
+        'preferences' : prefs,
+      }
+        res.render('index', userData);
+      console.log("Requested prefs!")
     });
 });
 
@@ -64,7 +115,6 @@ app.get('/search/:query/:Qtype/:counter/', function(req, res) {
   request(url, function(error, response, data) {
     if (!error && response.statusCode == 200) {
       var data = JSON.parse(data);
-      console.log(data)
       var currentVideo = data.Similar.Results[videoCounter];
       res.render('index', currentVideo);
     }
