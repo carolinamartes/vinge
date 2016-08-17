@@ -16,44 +16,14 @@ router.get('/', function (req, res){
       next();
     }).then(function(prefs){
 
-
-      // for (var i=0;i<prefs.length;i++){
-      // var decodedName= decodeURIComponent(prefs[i].name)
-      // prefs[i].name=decodedName
-      //   // console.log("prefs[i].name " + prefs[i].name)
-      // }
-
 console.log(prefs)
 
 
-
-// console.log(prefs.name)
-// console.log(theNames)
-// console.log(prefs)
-
-
-
-// console.log(prefs)
-//   var dataToSend = prefs;
-// dataToSend.forEach(function(el){
-// el.name="hi"
-// })
-// console.log("dataToSend" + JSON.parse(dataToSend))
-
-
-  //foreach over dataToSend
-
-  // set el.name = parsed(el.name)
-
-  // data.name=theNames
-
-// userData.preferences.name=theNames
       var userData={
         'email' : req.session.user.email,
         'preferences' : prefs,
       }
       // console.log(userData.prefs.theNames)
-
         res.render('index', userData);
   });
 }

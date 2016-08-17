@@ -1,4 +1,4 @@
-body{
+#big-container{
   overflow: hidden;
 }
 
@@ -15,6 +15,9 @@ body{
     height:100%;
 }
 
+.updt{
+  margin-bottom: 30px;
+}
 .hiddenID{
   display: none;
 }
@@ -40,13 +43,15 @@ body{
   margin: 1% auto;
   background-color: #eeeeee;
   height: 80vh;
-  margin-bottom: 100px;
+  margin-bottom: 70px;
 }
 /*
 body{
     overflow: hidden;
 }*/
-
+.mediaName{
+margin: 25px 0;
+}
 
 #logo:hover{
   background-color: #d32f2f;

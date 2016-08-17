@@ -1,6 +1,7 @@
 'use strict';
 $(document).ready(function() {
 
+
   $('select').material_select();
   $(".dropdown-button").dropdown();
 
@@ -16,9 +17,25 @@ $(document).ready(function() {
   }
 
   $('#user_logo').on('click', function() {
-    $("body").css({
-      "overflow": "visible"
-    });
+
+
+
+
+    $.ajax({
+      type: 'GET',
+      url: '/preferences',
+      success: function() {
+        //  location.reload();
+        console.log("got it!")
+        $("big-container").css({
+          "overflow": "visible"
+        });
+
+
+      }
+    })
+
+
 
   })
 
@@ -88,7 +105,7 @@ $(document).ready(function() {
   })
 
   $('.autoText').on('click', function(e) {
-    var query = $('h6').text();
+    var query = $(this).text();
     console.log(query)
     var Qtype = Qtype || "all";
     var counter = 0;
@@ -163,17 +180,26 @@ $(document).ready(function() {
              location.reload();
         }
       });
-    }
+
+      var getPref = {
+        user_email: user_email,
+
+      }
     $.ajax({
       type: 'GET',
-      url: '/preferences',
-      success: function() {
+      url: '/refresh',
+      data: getPref,
+      success: function(userData) {
+        location.reload();
         console.log("got it!")
-         location.reload();
+        console.log("userData")
       }
+    })
+
+    $("big-container").css({
+      "overflow": "visible"
     });
-
-
+  }
 
   })
 

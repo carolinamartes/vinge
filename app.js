@@ -69,18 +69,24 @@ app.put('/preferences', function(req, res) {
 
 
 app.get('/preferences', function(req, res) {
+  var getPref= req.body;
+
+  console.log("user_email" + email)
     db.any(
-      'SELECT DISTINCT ON (name,preference) name, yID, preference FROM preferences WHERE user_email=$1', [req.session.user.email]
+      'SELECT DISTINCT ON (name,preference) name, yID, preference FROM preferences WHERE user_email=$1', [getPref.user_email]
     ).catch(function(){
       res.error = 'Error. Could not retrieve user prefs.';
       next();
     }).then(function(prefs){
 
       var userData={
-        'email' : req.session.user.email,
+        'email' : user_email,
         'preferences' : prefs,
       }
-        res.render('index', userData);
+      // var location=location.pathname
+        res.send(userData)
+
+
       console.log("Requested prefs!")
     });
 });

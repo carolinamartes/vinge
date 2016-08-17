@@ -10,6 +10,7 @@
 </head>
 
 <body>
+  <div id="big-container">
   <ul id="dropdown1" class="dropdown-content">
     <li><a class= "red-text mediaOptions" id="movies">Movies</a></li>
     <li class="divider"></li>
@@ -55,46 +56,20 @@
       </div>
     </div>
   </div>
-    <div class="fixed-action-btn horizontal" style="bottom: 45vh; right: 44px;">
+    <div class="fixed-action-btn" style="position:fixed; bottom: 50%; right: 24px;">
       <a class="btn-floating btn-large red">
         <i class="material-icons">skip_next</i>
       </a>
     </div>
   </div>
   <div id="target">
-    <!-- <table>
-           <thead>
-             <tr>
-                 <th data-field="likes">Name</th>
-                 <th data-field="name">Item Name</th>
-                 <th data-field="price">Item Price</th>
-             </tr>
-           </thead>
 
-           <tbody>
-             <tr>
-               <td>Alvin</td>
-               <td>Eclair</td>
-               <td>$0.87</td>
-             </tr>
-             <tr>
-               <td>Alan</td>
-               <td>Jellybean</td>
-               <td>$3.76</td>
-             </tr>
-             <tr>
-               <td>Jonathan</td>
-               <td>Lollipop</td>
-               <td>$7.00</td>
-             </tr>
-           </tbody>
-         </table> -->
-         <h2 class="center">History</h2>
+         <!-- <h2 class="center">History</h2> -->
          {{#preferences}}
 
-      <h4>{{preference}}</h4>
-      <h5>{{name}}</h5>
-      <div class="buttons">
+      <h4 class="center mediaName">{{name}}</h4>
+      <h5 class="center">{{preference}}</h5>
+      <div class="buttons center">
         <button id="{{name}}" class="like waves-effect waves-light btn updt" value="like">Like</button>
         <button id="{{name}}" class="dislike waves-effect waves-light btn updt" value="dislike">Dislike</button>
         <button id="{{name}}" class="meh waves-effect waves-light btn updt" value="meh">Meh</button>
@@ -109,6 +84,7 @@
         {{/yid}}
     {{/preferences}}
   </div>
+</div>
 </body>
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
