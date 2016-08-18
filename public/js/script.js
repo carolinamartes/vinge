@@ -5,15 +5,15 @@ $(document).ready(function() {
   $('select').material_select();
   $(".dropdown-button").dropdown();
 
-  var user_email = $('#user_logo').text();
+  var user_email = $('.user_logo').attr('id');
 
   if (user_email !== "") {
-    sessionStorage.setItem('user_email', $('#user_logo').text())
+    sessionStorage.setItem('user_email', $('.user_logo').attr('id'))
   }
 
   if (user_email === "") {
     user_email = sessionStorage.getItem('user_email');
-    $('#user_logo').text(user_email);
+    $('.user_logo').attr('id', user_email);
   }
 
   // $('#user_logo').on('click', function() {

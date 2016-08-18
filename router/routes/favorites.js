@@ -12,13 +12,14 @@ router.get('/all', function(req, res) {
       'SELECT DISTINCT ON (name,preference) name, yID, preference FROM preferences WHERE user_email=$1', [req.session.user.email]
     ).catch(function() {
       res.error = 'Error. Could not retrieve user prefs.';
+      req.flash('No more movies here:(');
       next();
     }).then(function(prefs) {
       var userData = {
         'email': req.session.user.email,
         'preferences': prefs,
       }
-      res.render('favorites/all', userData);
+      res.render('favorites/all', userData, req.flash());
     });
   }
 })

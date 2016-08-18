@@ -23,7 +23,7 @@
             <a class="grey-text brand-logo center autoText autoOptions" id="suggestions"></a>
           </li>
           <li><a class="dropdown-button red-text " href="#!" data-activates="dropdown1">All Media<i class="material-icons right">arrow_drop_down</i></a></li>
-          <li><a class="grey-text" id="user_logo" href="/favorites/all">{{email}}</a></li>
+          <li><a class="grey-text user_logo" id= {{email}} href="/favorites/all">History</a></li>
           <li><a class="red-text" id="logout" href="/sessions/logout">Logout</a></li>
         </ul>
         <form class="searchBar">
@@ -48,6 +48,9 @@
           </nav>
           <div class="video-container">
             <div class="video-div">
+              <div class="alert alert-dismissible alert-danger">
+
+              </div>
                 {{#yUrl}}
               <iframe frameborder="0" src="{{yUrl}}">
               </iframe>
@@ -59,7 +62,7 @@
           </div>
         </div>
       </div>
-      <a  id="red-button" class="btn-floating btn-large waves-effect waves-light red" style="position:fixed; bottom: 50%; right: 24px;"><i class="material-icons">skip_next</i></a>
+      <a id="red-button" class="btn-floating btn-large waves-effect waves-light red" style="position:fixed; bottom: 50%; right: 24px;"><i class="material-icons">skip_next</i></a>
     </div>
   </div>
 </body>
