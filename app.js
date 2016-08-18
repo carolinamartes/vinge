@@ -7,8 +7,8 @@ const flash = require('connect-flash');
 const request = require('request');
 const env = require('dotenv').config();
 const pgp = require('pg-promise')();
-// const db = pgp('postgres://carolinamartes@localhost:5432/auth_p2')
-const db = pgp('postgres://lybtopytzzzqbf:wUHMkDGqj2-oTUith7hiqN5PM8@ec2-54-243-48-181.compute-1.amazonaws.com:5432/dam43ogo8qjd53') || pgp('postgres://carolinamartes@localhost:5432/auth_p2');
+const db = pgp('postgres://carolinamartes@localhost:5432/auth_p2')
+// const db = pgp('postgres://lybtopytzzzqbf:wUHMkDGqj2-oTUith7hiqN5PM8@ec2-54-243-48-181.compute-1.amazonaws.com:5432/dam43ogo8qjd53') || pgp('postgres://carolinamartes@localhost:5432/auth_p2');
 var port = Number(process.env.PORT || 3000)
 
 app.engine('html', mustacheExpress());
@@ -119,11 +119,19 @@ app.get('/search/:query/:Qtype/:counter/', function(req, res) {
   var videoCounter = req.params.counter;
   console.log(videoCounter)
   request(url, function(error, response, data) {
-    if (!error && response.statusCode == 200) {
       var data = JSON.parse(data);
       var currentVideo = data.Similar.Results[videoCounter];
+      console.log(currentVideo + "currentVideo")
+    if (currentVideo==undefined){
+      console.log('yay')
+      console.log(currentVideo)
+      error= {
+        error:"Nothing here. Try searching something else."}
+      res.render ('index', error);
+  }
+else{
       res.render('index', currentVideo);
-    }
+}
   })
 })
 

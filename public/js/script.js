@@ -123,7 +123,6 @@ $(document).ready(function() {
   })
 
   $(".mediaOptions").on("click", function() {
-
     var myString = window.location.pathname;
     var myRegexp = /(search)\/(.*)\/(all|music|movies|shows)/
     var match = myRegexp.exec(myString);
@@ -133,7 +132,6 @@ $(document).ready(function() {
 
     var Qtype = $(this).attr('id');
     window.location = "/search/" + query + "/" + Qtype + "/" + counter
-
   })
 
   $('.updt').on('click', function() {
@@ -169,26 +167,8 @@ $(document).ready(function() {
              location.reload();
         }
       });
+}
 
-      var getPref = {
-        user_email: user_email,
-
-      }
-    $.ajax({
-      type: 'GET',
-      url: '/refresh',
-      data: getPref,
-      success: function(userData) {
-        location.reload();
-        console.log("got it!")
-        console.log("userData")
-      }
-    })
-
-    $("big-container").css({
-      "overflow": "visible"
-    });
-  }
 
   })
 

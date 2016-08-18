@@ -5,6 +5,10 @@
   position: fixed;
 }
 
+.error{
+    background-color: #eeeeee;
+      margin-top: 50px;
+}
 .default{
     background-color: #eeeeee;
       text-align: center;
@@ -22,6 +26,7 @@
 
 .video-container{
     height:100%;
+    background-color: #eeeeee;
 }
 
 #welcome{
@@ -34,9 +39,6 @@
 }
 .hiddenID{
   display: none;
-}
-.video-div{
-  background-color: black;
 }
 
 .searchBar{
